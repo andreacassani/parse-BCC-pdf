@@ -1,12 +1,12 @@
 const fs = require("fs");
 const pdfreader = require("pdfreader");
 
-const pdfFiles = fs.readdirSync("./in").filter((f) => {
+const pdfFiles = fs.readdirSync("./in", "utf-8").filter((f) => {
   return f.indexOf("pdf") > -1;
 });
 
 for (let pdfFile of pdfFiles) {
-  fs.writeFileSync(`out/${pdfFile}.txt`, `${pdfFile}\n`);
+  fs.writeFileSync(`out/${pdfFile}.txt`, `${pdfFile}\n`, "utf-8");
   let dataAcquisto, dataRegistrazione, descrizione, importo;
 
   new pdfreader.PdfReader().parseFileItems(`in/${pdfFile}`, (error, item) => {
