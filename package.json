@@ -13,6 +13,6 @@
   "author": "Andrea Cassani",
   "license": "GPL-3.0 License",
   "dependencies": {
-    "pdfreader": "^1.2.14"
+    "pdfreader": "^2.0.0"
   }
 }

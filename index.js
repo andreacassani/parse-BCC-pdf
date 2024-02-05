@@ -1,5 +1,6 @@
 const fs = require("fs");
 const pdfreader = require("pdfreader");
+const f_currency = new RegExp("USD|GBP");
 
 const pdfFiles = fs.readdirSync("./in", "utf-8").filter((f) => {
   return f.indexOf("pdf") > -1;
@@ -49,7 +50,9 @@ for (let pdfFile of pdfFiles) {
         if (isNumber(text)) {
           importo = text;
         } else {
-          clearData();
+          if (!text.match(f_currency)) {
+            clearData();
+          }
         }
       } else {
         clearData();
