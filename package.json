@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Parser per gli estratti conto della Carta di Credito BCC da .pdf a .txt con tabulazione",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "npx patch-package"
   },
   "keywords": [
     "javascript",
@@ -13,6 +15,9 @@
   "author": "Andrea Cassani",
   "license": "GPL-3.0 License",
   "dependencies": {
-    "pdfreader": "^2.0.0"
+    "pdfreader": "^3.0.2"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.0"
   }
 }

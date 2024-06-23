@@ -1,0 +1,26 @@
+diff --git a/node_modules/pdfreader/node_modules/pdf2json/base/core/stream.js b/node_modules/pdfreader/node_modules/pdf2json/base/core/stream.js
+index 61f1af5..d54452f 100755
+--- a/node_modules/pdfreader/node_modules/pdf2json/base/core/stream.js
++++ b/node_modules/pdfreader/node_modules/pdf2json/base/core/stream.js
+@@ -610,6 +610,10 @@ var FlateStream = (function FlateStreamClosure() {
+ 
+ var PredictorStream = (function PredictorStreamClosure() {
+   function PredictorStream(str, params) {
++    if (!(params instanceof Dict)) {
++      params = new Dict();
++    }
++
+     var predictor = this.predictor = params.get('Predictor') || 1;
+ 
+     if (predictor <= 1)
+@@ -1648,7 +1652,9 @@ var CCITTFaxStream = (function CCITTFaxStreamClosure() {
+     this.str = str;
+     this.dict = str.dict;
+ 
+-    params = params || new Dict();
++    if (!(params instanceof Dict)) {
++      params = new Dict();
++    }
+ 
+     this.encoding = params.get('K') || 0;
+     this.eoline = params.get('EndOfLine') || false;

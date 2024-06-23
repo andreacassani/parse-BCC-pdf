@@ -1,5 +1,6 @@
-const fs = require("fs");
-const pdfreader = require("pdfreader");
+import fs from "fs";
+import { PdfReader } from "pdfreader";
+
 const f_currency = new RegExp("USD|GBP");
 
 const pdfFiles = fs.readdirSync("./in", "utf-8").filter((f) => {
@@ -10,7 +11,7 @@ for (let pdfFile of pdfFiles) {
   fs.writeFileSync(`out/${pdfFile}.txt`, `${pdfFile}\n`, "utf-8");
   let dataAcquisto, dataRegistrazione, descrizione, importo;
 
-  new pdfreader.PdfReader().parseFileItems(`in/${pdfFile}`, (error, item) => {
+  new PdfReader().parseFileItems(`in/${pdfFile}`, (error, item) => {
     if (error) {
       return console.log("An error occured while parsing:", error);
     }
